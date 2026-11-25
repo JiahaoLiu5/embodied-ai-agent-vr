@@ -1,0 +1,31 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1045 &1
+EditorBuildSettings:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Scenes:
+  - enabled: 1
+    path: Assets/EmbodiedAgent/Scenes/01_ConversationalAgent.unity
+    guid: f07505d920d1310438665400721b7066
+  - enabled: 0
+    path: Assets/EmbodiedAgent/Scenes/02_Coupling_Independent.unity
+    guid: 6ae0b0a9c00535f49ac57d39d480bea9
+  - enabled: 0
+    path: Assets/EmbodiedAgent/Scenes/02_Coupling_AgentFollowsUser.unity
+    guid: 6e1a3f45b0ed8f6429cff79daae7f138
+  - enabled: 0
+    path: Assets/EmbodiedAgent/Scenes/02_Coupling_UserAvatarFollowsAgent.unity
+    guid: d46e4a1837f2a4b43af81ddfdb362e6b
+  - enabled: 0
+    path: Assets/EmbodiedAgent/Scenes/02_Coupling_RecordedSource.unity
+    guid: b186c24262d89d649a10cd41c93c06db
+  - enabled: 0
+    path: Assets/EmbodiedAgent/Scenes/03_MotionRecording.unity
+    guid: 47b93e4eb772d084ea666418e06cb777
+  - enabled: 0
+    path: Assets/EmbodiedAgent/Demo/DesktopDemo.unity
+    guid: a2dbb05de1777a543b61110d0e8eea94
+  m_configObjects:
+    com.unity.xr.management.loader_settings: {fileID: 11400000, guid: 98e2d18c7d8afc641a74cdd463ba38a5, type: 2}
+    com.unity.xr.openxr.settings4: {fileID: 11400000, guid: feed8a3c2594d184ab0de8f820271a97, type: 2}
