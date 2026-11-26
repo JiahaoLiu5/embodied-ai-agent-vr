@@ -1,0 +1,28 @@
+{
+    "name": "EmbodiedAgent.Demo.Editor",
+    "rootNamespace": "",
+    "references": [
+        "EmbodiedAgent.Demo",
+        "Oculus.LipSync",
+        "Unity.Animation.Rigging",
+        "Unity.InputSystem",
+        "Unity.TextMeshPro",
+        "Unity.XR.CoreUtils",
+        "Unity.XR.Hands",
+        "Unity.XR.Interaction.Toolkit",
+        "Unity.XR.Management",
+        "UnityEngine.UI",
+        "glTFast"
+    ],
+    "includePlatforms": [
+        "Editor"
+    ],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": false,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

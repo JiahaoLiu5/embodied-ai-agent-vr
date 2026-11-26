@@ -1,0 +1,30 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 31db6c5d4b20ba541b323967dddb5e68, type: 3}
+  m_Name: Social media
+  m_EditorClassIdentifier: EmbodiedAgent.Demo::EmbodiedAgent.AllInOne.AgentTopic
+  id: social
+  studyLetter: S
+  title: Social media
+  question: Does social media bring people together or drive people further apart?
+  userPosition: Social media drives people apart.
+  agentPosition: Social media brings people together.
+  warmUpBoard: {fileID: 6530770573921513265, guid: 11cdef1658fe28045b58b3915f7a441d, type: 3}
+  instructionBoard: {fileID: 6530770573921513265, guid: d73f6ad9b73d6e846b8bf3800fc2eba5, type: 3}
+  warmUpActions:
+  - Right Hand Raising
+  - Left Hand Raising
+  - Neck Stretching
+  - Neck Stretching 2
+  - Standard Idle
+  - Look Around
+  instructions: {fileID: 4900000, guid: 9fb096e6482e6cd4dacfb49e18bf8568, type: 3}

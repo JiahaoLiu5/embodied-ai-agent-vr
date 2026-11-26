@@ -1,10 +1,6 @@
 using System;
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-#if UNITY_ANDROID && !UNITY_EDITOR
-using UnityEngine.Android;
-#endif
 
 /// <summary>
 /// Drop-in replacement for the original AudioRecorder.
@@ -27,11 +23,6 @@ public class AudioRecorder : MonoBehaviour
     [Header("General")]
     public ListeningMode listeningMode = ListeningMode.PushToTalk;
     public int sampleRate = 24000;
-
-    [Tooltip("Name of the microphone as Unity lists it in Microphone.devices. " +
-             "Empty uses the first device.")]
-    [SerializeField]
-    private string microphoneDeviceName = "";
 
     [SerializeField]
     private bool interruptResponseOnNewRecording = false;
@@ -127,12 +118,9 @@ public class AudioRecorder : MonoBehaviour
     public static event Action OnVADRecordingStarted;
     public static event Action OnVADRecordingEnded;
 
-    private const float MicrophoneRetrySeconds = 1f;
-
     private AudioPlayer audioPlayer;
     private AudioClip microphoneClip;
     private string microphoneDevice;
-    private bool missingDeviceNameLogged;
     private int lastMicrophoneFramePosition;
 
     // Only a short idle ring is retained for pre-roll.
@@ -156,118 +144,20 @@ public class AudioRecorder : MonoBehaviour
     private void Start()
     {
         audioPlayer = GetComponent<AudioPlayer>();
+
+        if (Microphone.devices.Length == 0)
+        {
+            Debug.LogError("[AudioRecorder] No microphone devices found.");
+            enabled = false;
+            return;
+        }
+
+        microphoneDevice = Microphone.devices[0];
         ResetVadState(resetNoiseFloor: true);
-        RequestMicrophonePermission();
-        StartCoroutine(StartMicrophoneWhenAvailable());
-    }
 
-    /// <summary>
-    /// Selects the microphone and, in VAD mode, starts it. If there is no device yet, for example
-    /// because the user has not answered the permission request, it tries again every second.
-    /// </summary>
-    private IEnumerator StartMicrophoneWhenAvailable()
-    {
-        bool waitingLogged = false;
-
-        while (true)
+        if (listeningMode == ListeningMode.VAD)
         {
-            if (TrySelectMicrophone())
-            {
-                if (listeningMode != ListeningMode.VAD ||
-                    Microphone.IsRecording(microphoneDevice))
-                {
-                    yield break;
-                }
-
-                StartMicrophone();
-
-                if (microphoneClip != null)
-                {
-                    yield break;
-                }
-            }
-
-            if (!waitingLogged)
-            {
-                Debug.LogWarning(
-                    "[AudioRecorder] No microphone is available yet. " +
-                    "Waiting for a device or for the microphone permission.");
-                waitingLogged = true;
-            }
-
-            yield return new WaitForSecondsRealtime(MicrophoneRetrySeconds);
-        }
-    }
-
-    /// <summary>
-    /// Sets microphoneDevice. Returns false while there is no permission or no device.
-    /// </summary>
-    private bool TrySelectMicrophone()
-    {
-        if (!HasMicrophonePermission())
-        {
-            return false;
-        }
-
-        string[] devices = Microphone.devices;
-        if (devices.Length == 0)
-        {
-            return false;
-        }
-
-        microphoneDevice = devices[0];
-
-        if (string.IsNullOrEmpty(microphoneDeviceName))
-        {
-            return true;
-        }
-
-        foreach (string device in devices)
-        {
-            if (string.Equals(device, microphoneDeviceName, StringComparison.OrdinalIgnoreCase))
-            {
-                microphoneDevice = device;
-                return true;
-            }
-        }
-
-        if (!missingDeviceNameLogged)
-        {
-            Debug.LogWarning(
-                $"[AudioRecorder] Microphone '{microphoneDeviceName}' not found. " +
-                $"Using '{microphoneDevice}'.");
-            missingDeviceNameLogged = true;
-        }
-
-        return true;
-    }
-
-    private static bool HasMicrophonePermission()
-    {
-#if UNITY_ANDROID && !UNITY_EDITOR
-        return Permission.HasUserAuthorizedPermission(Permission.Microphone);
-#else
-        return true;
-#endif
-    }
-
-    private static void RequestMicrophonePermission()
-    {
-#if UNITY_ANDROID && !UNITY_EDITOR
-        if (!HasMicrophonePermission())
-        {
-            Permission.RequestUserPermission(Permission.Microphone);
-        }
-#endif
-    }
-
-    private void WarnIfSampleRateDiffers()
-    {
-        if (microphoneClip != null && microphoneClip.frequency != sampleRate)
-        {
-            Debug.LogWarning(
-                $"[AudioRecorder] The microphone records at {microphoneClip.frequency} Hz " +
-                $"instead of {sampleRate} Hz. The recorded speech will be sent at the wrong speed.");
+            StartMicrophone();
         }
     }
 
@@ -307,9 +197,9 @@ public class AudioRecorder : MonoBehaviour
     /// </summary>
     public void StartRecording()
     {
-        if (!TrySelectMicrophone())
+        if (Microphone.devices.Length == 0)
         {
-            Debug.LogError("[AudioRecorder] No microphone is available.");
+            Debug.LogError("[AudioRecorder] No microphone devices found.");
             return;
         }
 
@@ -323,6 +213,8 @@ public class AudioRecorder : MonoBehaviour
             audioPlayer.ResetCancelPending();
         }
 
+        microphoneDevice = Microphone.devices[0];
+
         if (Microphone.IsRecording(microphoneDevice))
         {
             Microphone.End(microphoneDevice);
@@ -334,7 +226,6 @@ public class AudioRecorder : MonoBehaviour
             Mathf.Max(1, pushToTalkMaxSeconds),
             sampleRate);
 
-        WarnIfSampleRateDiffers();
         lastMicrophoneFramePosition = 0;
     }
 
@@ -376,11 +267,13 @@ public class AudioRecorder : MonoBehaviour
     /// </summary>
     public void StartMicrophone()
     {
-        if (!TrySelectMicrophone())
+        if (Microphone.devices.Length == 0)
         {
-            Debug.LogWarning("[AudioRecorder] No microphone is available.");
+            Debug.LogError("[AudioRecorder] No microphone devices found.");
             return;
         }
+
+        microphoneDevice = Microphone.devices[0];
 
         if (Microphone.IsRecording(microphoneDevice))
         {
@@ -393,7 +286,6 @@ public class AudioRecorder : MonoBehaviour
             Mathf.Max(1, microphoneRingBufferSeconds),
             sampleRate);
 
-        WarnIfSampleRateDiffers();
         lastMicrophoneFramePosition = 0;
         ResetVadState(resetNoiseFloor: true);
     }
@@ -604,7 +496,7 @@ public class AudioRecorder : MonoBehaviour
         }
         else
         {
-            // Endpoint rule:
+            // This is the requested endpoint rule:
             // level below threshold -> begin/continue timing;
             // only continuous low level exceeding endSilenceSeconds ends the utterance.
             currentContinuousSilenceSeconds += chunkSeconds;

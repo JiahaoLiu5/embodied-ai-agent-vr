@@ -1,0 +1,27 @@
+{
+    "name": "EmbodiedAgent.AllInOne.Editor",
+    "rootNamespace": "EmbodiedAgent.AllInOne.Editor",
+    "references": [
+        "DemoKit",
+        "EmbodiedAgent.Demo",
+        "Oculus.LipSync",
+        "Unity.Animation.Rigging",
+        "Unity.InputSystem",
+        "Unity.TextMeshPro",
+        "Unity.XR.CoreUtils",
+        "Unity.XR.Interaction.Toolkit",
+        "Unity.XR.Management",
+        "UnityEngine.UI"
+    ],
+    "includePlatforms": [
+        "Editor"
+    ],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": false,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

@@ -1,0 +1,111 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 717334355d0c95748bd2ff60226fb733, type: 3}
+  m_Name: Session
+  m_EditorClassIdentifier: EmbodiedAgent.Demo::EmbodiedAgent.AllInOne.AgentSessionScript
+  steps:
+  - id: ready
+    title: Get ready
+    hint: The session starts in a moment.
+    clip: {fileID: 0}
+    caption: 
+    studySeconds: 5
+    quickSeconds: 2
+    board: 0
+    kind: 0
+  - id: welcome
+    title: Welcome
+    hint: Listen to the instructions.
+    clip: {fileID: 8300000, guid: 51ef1d107f5228445811e4ce35d4f2c0, type: 3}
+    caption: Welcome here. In front of you, you can see your conversational partner.
+      In this session, you will generate ideas, discuss and debate with your partner
+      given a specific topic.
+    studySeconds: 13
+    quickSeconds: 12
+    board: 0
+    kind: 0
+  - id: warmup-board
+    title: Warm-up instructions
+    hint: Remember the order of the movements on the board.
+    clip: {fileID: 8300000, guid: c52f2d0e82868db4ab4b88a2286c26c9, type: 3}
+    caption: Before we start, both of you will perform a series of movements as a
+      warm-up activity. Please remember your order of movement from the board before
+      it disappears. Then we will tell you to start.
+    studySeconds: 23
+    quickSeconds: 19.5
+    board: 1
+    kind: 0
+  - id: warmup-start
+    title: Start
+    hint: The warm-up starts now.
+    clip: {fileID: 8300000, guid: 6d384f8fa693c0d408f8c4497d864b9d, type: 3}
+    caption: You can start now.
+    studySeconds: 0
+    quickSeconds: 0
+    board: 0
+    kind: 1
+  - id: warmup
+    title: Warm-up
+    hint: Do the movements in the order you remember. Amy does hers at the same time.
+    clip: {fileID: 0}
+    caption: 
+    studySeconds: 0
+    quickSeconds: 0
+    board: 0
+    kind: 2
+  - id: pause
+    title: Short pause
+    hint: Relax your arms.
+    clip: {fileID: 0}
+    caption: 
+    studySeconds: 3
+    quickSeconds: 2
+    board: 0
+    kind: 0
+  - id: preparation
+    title: Preparation
+    hint: Read the board and think about your arguments.
+    clip: {fileID: 8300000, guid: 26bc70023e88c764e8853c6ed9612abb, type: 3}
+    caption: Great job! Now, you can see the background information and the distinct
+      perspective you will represent on the instruction board. You will now have
+      one minute to think of your argument and supporting evidence before we come
+      to the debate.
+    studySeconds: 79
+    quickSeconds: 35
+    board: 2
+    kind: 0
+  - id: debate
+    title: Debate
+    hint: Talk with Amy. You may interrupt her.
+    clip: {fileID: 8300000, guid: bfb62f11c06ab6044ab89db2eb742da4, type: 3}
+    caption: Excellent. Please start the five-minute debate now.
+    studySeconds: 305
+    quickSeconds: 94
+    board: 0
+    kind: 3
+  - id: end
+    title: End
+    hint: The session ends here.
+    clip: {fileID: 8300000, guid: d9878fab532950049a66127c8f817c89, type: 3}
+    caption: Time's up! Thanks for your great performance and that's the end of this
+      session.
+    studySeconds: 0
+    quickSeconds: 0
+    board: 0
+    kind: 1
+  reminders:
+  - 180
+  - 60
+  reminderBoards:
+  - {fileID: 6530770573921513265, guid: 84d31300b1739924286456298869c8b3, type: 3}
+  - {fileID: 6530770573921513265, guid: 1a6ec022a89d14045bb5ce9b37499712, type: 3}
+  reminderSeconds: 3

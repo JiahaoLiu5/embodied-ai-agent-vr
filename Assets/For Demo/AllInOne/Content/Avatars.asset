@@ -1,0 +1,45 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c3e2bdef128d91047a3db3322c00e377, type: 3}
+  m_Name: Avatars
+  m_EditorClassIdentifier: EmbodiedAgent.Demo::EmbodiedAgent.AllInOne.AgentAvatarCatalog
+  avatars:
+  - id: avatar-1
+    label: Avatar 1
+    prefab: {fileID: 7426310423749397403, guid: f49f55024aede46428b95bdb35f65f4a, type: 3}
+    definition: {fileID: 9000000, guid: fd273fbfe68c537489540beb4494a4d9, type: 3}
+    thumbnail: {fileID: 2800000, guid: eb8f308cbacdff346b344a68b23d3fc2, type: 3}
+  - id: avatar-2
+    label: Avatar 2
+    prefab: {fileID: 3840285423408652473, guid: eaee46fbcb2b0a44ba8898e75f3e4801, type: 3}
+    definition: {fileID: 9000000, guid: fd273fbfe68c537489540beb4494a4d9, type: 3}
+    thumbnail: {fileID: 2800000, guid: 1576a32a41a108443b4e8410e6adb2ce, type: 3}
+  - id: avatar-3
+    label: Avatar 3
+    prefab: {fileID: 5495470575141167597, guid: 997c1cb557bed1748bbe9f2a5ca4c86a, type: 3}
+    definition: {fileID: 9000000, guid: fd273fbfe68c537489540beb4494a4d9, type: 3}
+    thumbnail: {fileID: 2800000, guid: b695bc6619ff07a4090457b14fbacc67, type: 3}
+  - id: avatar-4
+    label: Avatar 4
+    prefab: {fileID: 7841137987276615253, guid: 85aeb3aa01177a147b53e51e2517a3df, type: 3}
+    definition: {fileID: 9000000, guid: 20da586a8b8491c45b3b559bb688664d, type: 3}
+    thumbnail: {fileID: 2800000, guid: dbcfb7b8340d8aa40a3826b1227bf9ad, type: 3}
+  - id: avatar-5
+    label: Avatar 5
+    prefab: {fileID: 6742012245048217119, guid: 080a90bde7cee494cbc74885da3abbc3, type: 3}
+    definition: {fileID: 9000000, guid: 20da586a8b8491c45b3b559bb688664d, type: 3}
+    thumbnail: {fileID: 2800000, guid: abba36603fbc18a45b5c217fece72d3a, type: 3}
+  - id: avatar-6
+    label: Avatar 6
+    prefab: {fileID: 6783431171481811670, guid: 83119848b0f33a842ac23ca166cf276e, type: 3}
+    definition: {fileID: 9000000, guid: 20da586a8b8491c45b3b559bb688664d, type: 3}
+    thumbnail: {fileID: 2800000, guid: 217ab90aa84129045a0ef744efa6a083, type: 3}

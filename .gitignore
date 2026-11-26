@@ -82,6 +82,9 @@ openai_api_key.txt.meta
 /[Aa]ssets/VRRecordings/
 /[Aa]ssets/VRRecordings.meta
 
+# Written by Unity on this machine
+.vsconfig
+
 # Local release helpers
 /release_*.txt
 /release_*.log

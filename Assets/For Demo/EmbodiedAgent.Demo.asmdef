@@ -1,0 +1,26 @@
+{
+    "name": "EmbodiedAgent.Demo",
+    "rootNamespace": "",
+    "references": [
+        "DemoKit",
+        "Oculus.LipSync",
+        "Unity.Animation.Rigging",
+        "Unity.InputSystem",
+        "Unity.TextMeshPro",
+        "Unity.XR.CoreUtils",
+        "Unity.XR.Hands",
+        "Unity.XR.Interaction.Toolkit",
+        "Unity.XR.Management",
+        "UnityEngine.UI",
+        "glTFast"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": false,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

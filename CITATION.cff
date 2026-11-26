@@ -5,13 +5,13 @@ title: Embodied AI Agent VR
 abstract: >-
   A voice-to-voice LLM agent with a body in VR: OpenAI Realtime speech,
   LLM-selected gestures through function calling, lip sync, and a programmable
-  movement-coupling layer between user and agent.
+  movement transformation layer between user and agent.
 authors:
   - family-names: Liu
     given-names: Jiahao
     affiliation: Cornell University
-version: 1.0.0
-date-released: 2026-11-24
+version: 1.1.0
+date-released: 2026-11-25
 license: MIT
 repository-code: https://github.com/JiahaoLiu5/embodied-ai-agent-vr
 url: https://jiahaoliu5.github.io/projects/

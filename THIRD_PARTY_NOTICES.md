@@ -8,14 +8,16 @@ The [MIT licence](LICENSE) covers **the source code in this repository only**, w
 
 | Content | Path | Owner | Covered by this project's MIT licence |
 | --- | --- | --- | --- |
-| Realtime API package | `Packages/com.mapluisch.openai-realtime-api-for-unity` | Martin Pluisch | No, own MIT licence |
-| Debug panel | `Assets/ThirdParty/RealtimeDemoUI` | Martin Pluisch | No, own MIT licence |
+| Realtime API client | `Packages/com.mapluisch.openai-realtime-api-for-unity`, `Assets/For Demo/Realtime` | Martin Pluisch | No, own MIT licence |
+| Debug panel | `Assets/ThirdParty/RealtimeDemoUI`, `Assets/For Demo/RealtimeDemoUI` | Martin Pluisch | No, own MIT licence |
 | OVRLipSync | `Assets/ThirdParty/Oculus/LipSync` | Meta | No |
-| Animation clips | `Assets/EmbodiedAgent/Animations` (`.anim`) | Adobe (Mixamo) | No |
-| Avatars | `Assets/EmbodiedAgent/Avatars` | Avaturn | No |
-| Room | `Assets/EmbodiedAgent/Environment` | see below | No |
+| Animation clips | `Assets/Shared/Animations` (`.anim`) | Adobe (Mixamo) | No |
+| Avatars and pictures of them | `Assets/Shared/Avatars`, `Assets/For Demo/Avatars`, `Assets/For Demo/AllInOne/Content/Thumbnails` | Avaturn | No |
+| Room | `Assets/Shared/Environment` | see below | No |
+| Narration | `Assets/For Study/Prefab/BackgroundVoice` | see below | No |
+| Inter font | `Assets/For Demo/DemoKit/Fonts`, `Assets/For Demo/DemoKit/Runtime/Resources` | The Inter Project Authors | No, SIL Open Font License 1.1 |
 | TextMesh Pro, font, sprites | `Assets/ThirdParty/TextMesh Pro` | Unity and others | No |
-| Input actions | `Assets/EmbodiedAgent/Input` | Unity, edited | No |
+| Input actions | `Assets/Shared/Input` | Unity, edited | No |
 | Scripts adapted from other work | see below | see below | See below |
 | Unity packages | `Packages/manifest.json` | Unity | No |
 
@@ -23,10 +25,11 @@ The [MIT licence](LICENSE) covers **the source code in this repository only**, w
 
 ### OpenAI-Realtime-API-for-Unity
 
-- **Path**: `Packages/com.mapluisch.openai-realtime-api-for-unity` (embedded, modified) and `Assets/ThirdParty/RealtimeDemoUI` (copy of the package's sample: script, prefab, sprites).
+- **Path**: `Packages/com.mapluisch.openai-realtime-api-for-unity` (embedded, modified, used by `For Study`), `Assets/For Demo/Realtime` (the copy of the demo, modified further), and `Assets/ThirdParty/RealtimeDemoUI` and `Assets/For Demo/RealtimeDemoUI` (the package's sample: script, prefab, sprites, once for `For Study` and once for the demo).
 - **Origin**: <https://github.com/mapluisch/OpenAI-Realtime-API-for-Unity>, version 1.0.2, by Martin Pluisch.
-- **Terms**: MIT, Copyright (c) 2024 Martin Pluisch. Full text in [`LICENSE.md`](Packages/com.mapluisch.openai-realtime-api-for-unity/LICENSE.md).
-- **Changes**: `RealtimeAPIWrapper` (current protocol, gesture tool, key look-up, reconnecting, send lock), `AudioRecorder` (new voice activity detection), `AudioPlayer` (clip release, finished event), `AudioProcessingUtils` (an unused import removed).
+- **Terms**: MIT, Copyright (c) 2024 Martin Pluisch. Full text in [`Packages/.../LICENSE.md`](Packages/com.mapluisch.openai-realtime-api-for-unity/LICENSE.md) and [`Assets/For Demo/Realtime/LICENSE.md`](Assets/For%20Demo/Realtime/LICENSE.md).
+- **Changes in the package**: the modified client that the original scenes were made with (current protocol, gesture tool, new voice activity detection). Added for this repository: `ApiKeyFallback` and the one line that calls it, so that no key is in a scene, and `VisualScriptingNamespace`, which replaces an unused package.
+- **Changes in the demo copy**: `RealtimeAPIWrapper` (key look-up, reconnecting, send lock, interruption, tool answers, problem reports), `RealtimeStatus` (new), `AudioRecorder` (new voice activity detection, mute, test hooks), `AudioPlayer` (clip release, finished event, played time), `AudioProcessingUtils` (an unused import removed).
 - **Within it**: `SimpleVad` and `HighPassFilter` in `AudioProcessingUtils.cs` are credited in the file to Macoron, [whisper.unity](https://github.com/Macoron/whisper.unity) (MIT according to its repository). They are not called any more.
 - **What you must do**: keep the copyright notice and the licence text.
 
@@ -34,8 +37,8 @@ The [MIT licence](LICENSE) covers **the source code in this repository only**, w
 
 | File | Source | Terms |
 | --- | --- | --- |
-| `Scripts/Agent/EyeAnimationHandlerNew.cs` | Adapted from `EyeAnimationHandler` of the Ready Player Me Unity SDK; namespace and menu entry kept | The SDK is published under MIT as far as known. Check its repository and keep its notice |
-| `Scripts/Avatar/IKTargetFollowVRRig.cs`, `Scripts/Avatar/IKFootSolver.cs` | The structure follows a public VR body tutorial by Valem; the foot solver goes back to a Unity foot placement prototype. This attribution was made from the code itself | No licence text came with them. Replace them if you need a clear licence |
+| `EyeAnimationHandlerNew.cs` in `Assets/For Demo/Scripts/Agent` and `Assets/For Study/Script` | Adapted from `EyeAnimationHandler` of the Ready Player Me Unity SDK; namespace and menu entry kept | The SDK is published under MIT as far as known. Check its repository and keep its notice |
+| `IKTargetFollowVRRig.cs`, `IKFootSolver.cs` in `Assets/For Demo/Scripts/Avatar` and `Assets/For Study/VR Body` | The structure follows a public VR body tutorial by Valem; the foot solver goes back to a Unity foot placement prototype. This attribution was made from the code itself | No licence text came with them. Replace them if you need a clear licence |
 | `Assets/Plugins/Android/AndroidManifest.xml`, `launcherTemplate.gradle` | Generated by the Meta and Unity tools, edited | Terms of those tools |
 
 ## Plugins
@@ -52,33 +55,46 @@ The [MIT licence](LICENSE) covers **the source code in this repository only**, w
 
 ### Mixamo
 
-- **Path**: `Assets/EmbodiedAgent/Animations` (62 `.anim` files). The Animator controllers in the same folder were made for this project and refer to these clips.
+- **Path**: `Assets/Shared/Animations` (62 `.anim` files). The Animator controllers in the same folder were made for this project and refer to these clips.
 - **Origin**: animations from <https://www.mixamo.com>, retargeted, saved as Unity clips with the root path `Armature_1`, and partly copied without head, arm and leg bones.
 - **Owner**: Adobe.
 - **Terms**: Adobe's terms for Mixamo. As far as known, Adobe allows use in personal, commercial and non-profit projects and restricts the distribution of the raw files as such. The official page was not available when this file was written. Read Adobe's current Mixamo FAQ and terms.
 - **What you must do**: do not take the clips out of this repository and publish them as a collection. For your own project, download the animations from Mixamo with your own account or use your own clips. [docs/CUSTOMIZE.md](docs/CUSTOMIZE.md) explains how to add them.
-- **Derived data**: the CSV files in `Assets/EmbodiedAgent/SampleMotion` are head and hand movements recorded from the agent while it played these clips. They contain no tracked movement of people.
+- **Derived data**: the CSV files in `Assets/Shared/SampleMotion` are head and hand movements recorded from the agent while it played these clips. They contain no tracked movement of people.
 
 ## Avatars
 
 ### Avaturn
 
-- **Path**: `Assets/EmbodiedAgent/Avatars/001.glb` (agent), `005.glb` and `Male 005.prefab` (user), `Final/*.glb` and prefabs (six selectable user avatars), `Humanoid Avatar Model/Male.fbx` and `Female.fbx` (humanoid definitions, exported from Avaturn bodies with Blender).
+- **Path**: in `Assets/Shared/Avatars`: `001.glb` (agent), `005.glb` (user), `Final/*.glb` and prefabs (six selectable user avatars), `Humanoid Avatar Model/Male.fbx` and `Female.fbx` (humanoid definitions, exported from Avaturn bodies with Blender). `Assets/For Demo/Avatars/Male 005.prefab` refers to `005.glb`. The PNG files in `Assets/For Demo/AllInOne/Content/Thumbnails` are renderings of the six avatars.
 - **Origin**: created with <https://avaturn.me>. The GLB files name "Avaturn.me | Blender" as generator and contain no copyright field.
 - **Terms**: Avaturn's terms of service. The licence for redistribution was not confirmed for this release.
 - **What you must do**: read Avaturn's current terms. For your own project create your own avatars.
 
 ## Room
 
-- **Path**: `Assets/EmbodiedAgent/Environment` (models `envExtensionSingle.fbx`, `LightfromRoomDeprecated.fbx`, textures, materials, prefab `HexagonEnv`, mirror render textures).
+- **Path**: `Assets/Shared/Environment` (models `envExtensionSingle.fbx`, `LightfromRoomDeprecated.fbx`, textures, materials, prefab `HexagonEnv`, mirror render textures).
 - **Origin**: as far as known, room assets used in projects of the Virtual Embodiment Lab at Cornell University. The files contain no author or licence note.
 - **Terms**: not stated. Do not reuse these assets outside this project without asking.
+
+## Narration
+
+- **Path**: `Assets/For Study/Prefab/BackgroundVoice` (six MP3 files with spoken instructions). The All-in-One scene plays them in the full session.
+- **Origin**: made for the original scenes. The files contain no author, tool, or licence note, and the source of the voice was not confirmed for this release.
+- **Terms**: not stated. Do not reuse these files outside this project without asking.
+
+## Fonts of the DemoKit
+
+- **Path**: `Assets/For Demo/DemoKit/Fonts` (`Inter-Medium.otf`, `Inter-SemiBold.otf`, version 3.015) and the distance field assets made from them in `Assets/For Demo/DemoKit/Runtime/Resources/DemoKit`.
+- **Owner**: Copyright 2020 The Inter Project Authors, <https://github.com/rsms/inter>.
+- **Terms**: SIL Open Font License 1.1, text in [`Inter - OFL.txt`](Assets/For%20Demo/DemoKit/Fonts/Inter%20-%20OFL.txt).
+- **What you must do**: keep the copyright notice and the licence text with the fonts, and do not sell the fonts by themselves.
 
 ## Unity content
 
 | Content | Path | Terms |
 | --- | --- | --- |
-| XR Interaction Toolkit default input actions | `Assets/EmbodiedAgent/Input/XRI Default Input Actions.inputactions` | From the sample Starter Assets of XR Interaction Toolkit 3.4.1, Unity Companion License. Seven actions were added: `SelectAvatar1` to `SelectAvatar6`, `ToggleConnection` |
+| XR Interaction Toolkit default input actions | `Assets/Shared/Input/XRI Default Input Actions.inputactions` | From the sample Starter Assets of XR Interaction Toolkit 3.4.1, Unity Companion License. Seven actions were added: `SelectAvatar1` to `SelectAvatar6`, `ToggleConnection` |
 | TextMesh Pro essentials | `Assets/ThirdParty/TextMesh Pro` | Unity Companion License |
 | Liberation Sans | `Assets/ThirdParty/TextMesh Pro/Fonts` | SIL Open Font License 1.1, text in `LiberationSans - OFL.txt` |
 | EmojiOne sprites | `Assets/ThirdParty/TextMesh Pro/Sprites` | Sample emojis provided by EmojiOne and shipped with TextMesh Pro. See the EmojiOne (JoyPixels) licensing terms |
@@ -108,4 +124,4 @@ The OpenAI Realtime API is a paid service with its own terms and usage policies.
 
 ## Content made for this project
 
-Scripts in `Assets/EmbodiedAgent/Scripts` and `Assets/EmbodiedAgent/Demo` (except the adapted scripts above), Animator controllers, the coupling and rig prefabs, scenes, boards and the documentation were made for this project.
+Scripts in `Assets/For Demo` (except the Realtime client, the debug panel, and the adapted scripts above), including All-in-One and the DemoKit, scripts, boards, and scenes in `Assets/For Study` (except the adapted scripts above), Animator controllers, the movement transformation and rig prefabs, and the documentation were made for this project.

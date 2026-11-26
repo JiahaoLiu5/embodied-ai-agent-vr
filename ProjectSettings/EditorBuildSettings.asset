@@ -6,26 +6,77 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/EmbodiedAgent/Scenes/01_ConversationalAgent.unity
+    path: Assets/For Demo/Scenes/AllInOne.unity
+    guid: 4c49fc157ab77df47b65ed4115fb4501
+  - enabled: 0
+    path: Assets/For Demo/Scenes/DesktopDemo.unity
+    guid: a2dbb05de1777a543b61110d0e8eea94
+  - enabled: 0
+    path: Assets/For Demo/Scenes/01_ConversationalAgent.unity
     guid: f07505d920d1310438665400721b7066
   - enabled: 0
-    path: Assets/EmbodiedAgent/Scenes/02_Coupling_Independent.unity
-    guid: 6ae0b0a9c00535f49ac57d39d480bea9
+    path: Assets/For Demo/Scenes/02_Mimicry.unity
+    guid: 53b09ff3e6e633f355fe472cda083162
   - enabled: 0
-    path: Assets/EmbodiedAgent/Scenes/02_Coupling_AgentFollowsUser.unity
-    guid: 6e1a3f45b0ed8f6429cff79daae7f138
+    path: Assets/For Demo/Scenes/02_Independent.unity
+    guid: 876b7531fcb5e7534d51addcd56251fb
   - enabled: 0
-    path: Assets/EmbodiedAgent/Scenes/02_Coupling_UserAvatarFollowsAgent.unity
-    guid: d46e4a1837f2a4b43af81ddfdb362e6b
+    path: Assets/For Demo/Scenes/02_Noise.unity
+    guid: 4fc43e31bfccf24d06bb0ec934577c0c
   - enabled: 0
-    path: Assets/EmbodiedAgent/Scenes/02_Coupling_RecordedSource.unity
-    guid: b186c24262d89d649a10cd41c93c06db
+    path: Assets/For Demo/Scenes/02_Leading.unity
+    guid: 041067eec188f9129bdf01943ce78f2e
   - enabled: 0
-    path: Assets/EmbodiedAgent/Scenes/03_MotionRecording.unity
+    path: Assets/For Demo/Scenes/03_MotionRecording.unity
     guid: 47b93e4eb772d084ea666418e06cb777
   - enabled: 0
-    path: Assets/EmbodiedAgent/Demo/DesktopDemo.unity
-    guid: a2dbb05de1777a543b61110d0e8eea94
+    path: Assets/For Study/Scenes/Final/16 Scenes/01 M-S.unity
+    guid: 6e1a3f45b0ed8f6429cff79daae7f138
+  - enabled: 0
+    path: Assets/For Study/Scenes/Final/16 Scenes/02 L-S.unity
+    guid: d46e4a1837f2a4b43af81ddfdb362e6b
+  - enabled: 0
+    path: Assets/For Study/Scenes/Final/16 Scenes/03 I-S.unity
+    guid: 6ae0b0a9c00535f49ac57d39d480bea9
+  - enabled: 0
+    path: Assets/For Study/Scenes/Final/16 Scenes/04 N-S.unity
+    guid: b186c24262d89d649a10cd41c93c06db
+  - enabled: 0
+    path: Assets/For Study/Scenes/Final/16 Scenes/05 M-W.unity
+    guid: 25110733089c67543830a68634541771
+  - enabled: 0
+    path: Assets/For Study/Scenes/Final/16 Scenes/06 L-W.unity
+    guid: 67137e6fd410c724c9dc83d3eeb1c4bc
+  - enabled: 0
+    path: Assets/For Study/Scenes/Final/16 Scenes/07 I-W.unity
+    guid: 0d01feb217c932c40a94054208a93cc9
+  - enabled: 0
+    path: Assets/For Study/Scenes/Final/16 Scenes/08 N-W.unity
+    guid: 01d7f781775dc56439b7aa6780059b9b
+  - enabled: 0
+    path: Assets/For Study/Scenes/Final/16 Scenes/09 M-E.unity
+    guid: 3b1bdc69d0888444ba87246f6570877d
+  - enabled: 0
+    path: Assets/For Study/Scenes/Final/16 Scenes/10 L-E.unity
+    guid: 1e1333617eadc7b47ad76ce700b3d9ef
+  - enabled: 0
+    path: Assets/For Study/Scenes/Final/16 Scenes/11 I-E.unity
+    guid: b78594e71a003374da46056587bb200d
+  - enabled: 0
+    path: Assets/For Study/Scenes/Final/16 Scenes/12 N-E.unity
+    guid: 43afd52f0cbab1a4e9d0c3dbe76e53fd
+  - enabled: 0
+    path: Assets/For Study/Scenes/Final/16 Scenes/13 M-G.unity
+    guid: d7d0251470a82d74ea6f7beba28bacb8
+  - enabled: 0
+    path: Assets/For Study/Scenes/Final/16 Scenes/14 L-G.unity
+    guid: 8d785494df32c3d4c82b7c34b8d7364b
+  - enabled: 0
+    path: Assets/For Study/Scenes/Final/16 Scenes/15 I-G.unity
+    guid: e57c5867afeef974d83edc5a73d4d057
+  - enabled: 0
+    path: Assets/For Study/Scenes/Final/16 Scenes/16 N-G.unity
+    guid: 1df4c7a7f27492740a961df732501a42
   m_configObjects:
     com.unity.xr.management.loader_settings: {fileID: 11400000, guid: 98e2d18c7d8afc641a74cdd463ba38a5, type: 2}
     com.unity.xr.openxr.settings4: {fileID: 11400000, guid: feed8a3c2594d184ab0de8f820271a97, type: 2}
